@@ -13,6 +13,8 @@ import AboutUsPage from "./pages/AboutUsPage";
 import HomePage from "./pages/HomePage";
 import SettingsPage from "./components/dashboard/sidebarPages/SettingsPage";
 import CommunityPage from "./pages/CommunityPage";
+import BlogPage from "./pages/BlogPage";
+import VulnerablePage from './pages/VulnerablePage'; // Import VulnerablePage
 function App() {
   // Tạo một router với createBrowserRouter, định nghĩa các route của ứng dụng
   // Data router api
@@ -30,6 +32,7 @@ function App() {
     { path: "/about", element: <AboutUsPage /> },
     { path: "/setting", element: <SettingsPage /> },
     { path: "/community", element: <CommunityPage /> },
+    { path: "/blog", element: <BlogPage /> },
   ]);
   // Sử dụng RouterProvider để cung cấp <Router> cho toàn bộ ứng dụng
   return (
@@ -40,6 +43,17 @@ function App() {
       {/* hiển thị các thông báo dạng "toast" (thường dùng thư viện như react-toastify) */}
       <ToastContainer />
     </UserProvider>
+  );
+  const [input, setInput] = useState('');
+  return (
+    <div>
+      <input
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <VulnerableComponent userInput={input} />
+    </div>
   );
 }
 
